@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -20,6 +21,25 @@
             android:layout_weight="1"
             android:textColor="@color/on_background"
             android:textSize="16sp" />
+
+        <!--
+            Visible only when the day is enabled.
+            "Sync"   = this day shares the global time window (default).
+            "Custom" = this day has its own independent time window.
+            Tapping it toggles between the two modes.
+        -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="@string/schedule_sync"
+            android:textSize="11sp"
+            android:visibility="gone"
+            app:chipMinHeight="32dp"
+            app:chipStartPadding="8dp"
+            app:chipEndPadding="8dp"
+            style="@style/Widget.MaterialComponents.Chip.Action" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_day_enabled"

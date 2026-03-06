@@ -49,6 +49,9 @@
     <string name="preset_every_day">Every Day</string>
     <string name="start_time">Start</string>
     <string name="end_time">End</string>
+    <!-- Schedule day sync/custom chip labels -->
+    <string name="schedule_sync">Sync</string>
+    <string name="schedule_custom">Custom</string>
 
     <!-- Delete profile -->
     <string name="delete_profile_title">Delete Profile</string>
