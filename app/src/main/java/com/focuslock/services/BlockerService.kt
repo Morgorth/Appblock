@@ -1,9 +1,12 @@
 package com.focuslock.services
 
 import android.app.Service
+import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ServiceInfo
+import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
@@ -46,10 +49,19 @@ class BlockerService : LifecycleService() {
         profileRepository = (application as FocusLockApplication).profileRepository
 
         NotificationUtils.createChannels(this)
-        startForeground(
-            NotificationUtils.NOTIF_ID_BLOCKER,
-            NotificationUtils.buildBlockerNotification(this)
-        )
+        // Android 14 (API 34)+ requires the foreground service type to be passed explicitly
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            startForeground(
+                NotificationUtils.NOTIF_ID_BLOCKER,
+                NotificationUtils.buildBlockerNotification(this),
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE
+            )
+        } else {
+            startForeground(
+                NotificationUtils.NOTIF_ID_BLOCKER,
+                NotificationUtils.buildBlockerNotification(this)
+            )
+        }
 
         startPolling()
     }
@@ -100,6 +112,25 @@ class BlockerService : LifecycleService() {
     private fun getForegroundApp(): String? {
         val endTime = System.currentTimeMillis()
         val beginTime = endTime - 3000L // look back 3 seconds
+
+        // queryEvents gives precise ACTIVITY_RESUMED events; more reliable on Pixel 8/9
+        // (Android 14/15) than the older queryUsageStats approach.
+        val usageEvents = usageStatsManager.queryEvents(beginTime, endTime)
+        val event = UsageEvents.Event()
+        var lastForegroundPackage: String? = null
+        while (usageEvents.hasNextEvent()) {
+            usageEvents.getNextEvent(event)
+            val isForegroundEvent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                event.eventType == UsageEvents.Event.ACTIVITY_RESUMED
+            } else {
+                @Suppress("DEPRECATION")
+                event.eventType == UsageEvents.Event.MOVE_TO_FOREGROUND
+            }
+            if (isForegroundEvent) lastForegroundPackage = event.packageName
+        }
+        if (lastForegroundPackage != null) return lastForegroundPackage
+
+        // Fallback: covers apps already in the foreground before our 3-second event window
         val stats = usageStatsManager.queryUsageStats(
             UsageStatsManager.INTERVAL_DAILY, beginTime, endTime
         )

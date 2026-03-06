@@ -2,11 +2,13 @@ package com.focuslock.ui.overlay
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.focuslock.FocusLockApplication
@@ -39,12 +41,23 @@ class BlockOverlayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Show over lock screen
-        window.addFlags(
-            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
-                    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
-                    WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-        )
+        // Show over lock screen — use the modern Activity API on API 27+ (Pixel 8/9),
+        // and fall back to window flags on older devices.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            setShowWhenLocked(true)
+            setTurnScreenOn(true)
+        } else {
+            @Suppress("DEPRECATION")
+            window.addFlags(
+                WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                        WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+            )
+        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        // Route back-press to home instead of back to the blocked app.
+        // onBackPressedDispatcher replaces the deprecated onBackPressed() on API 33+.
+        onBackPressedDispatcher.addCallback(this) { goHome() }
 
         binding = ActivityBlockOverlayBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -60,11 +73,6 @@ class BlockOverlayActivity : AppCompatActivity() {
         loadBlockInfo()
         setupButtons()
         setupOverrideField()
-    }
-
-    override fun onBackPressed() {
-        // Override back button — send user home instead of going back to blocked app
-        goHome()
     }
 
     private fun loadBlockInfo() {
