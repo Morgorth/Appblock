@@ -87,8 +87,12 @@ class ProfileEditorActivity : AppCompatActivity() {
             }
         })
 
+        // Re-render whenever days or pinned set changes.
         viewModel.scheduleDays.observe(this, Observer { days ->
-            renderSchedule(days)
+            renderSchedule(days, viewModel.pinnedDays.value ?: emptySet())
+        })
+        viewModel.pinnedDays.observe(this, Observer { pinned ->
+            renderSchedule(viewModel.scheduleDays.value ?: emptyList(), pinned)
         })
 
         viewModel.saveComplete.observe(this, Observer { done ->
@@ -125,7 +129,7 @@ class ProfileEditorActivity : AppCompatActivity() {
             viewModel.saveProfile(name, duration)
         }
 
-        // Quick schedule presets
+        // Quick schedule presets — only affect enabled days, keep times intact.
         binding.btnPresetWeekdays.setOnClickListener { applyPreset(listOf(1, 2, 3, 4, 5)) }
         binding.btnPresetWeekends.setOnClickListener { applyPreset(listOf(6, 7)) }
         binding.btnPresetEveryDay.setOnClickListener { applyPreset((1..7).toList()) }
@@ -136,40 +140,73 @@ class ProfileEditorActivity : AppCompatActivity() {
             resources.getQuantityString(R.plurals.minutes_count, minutes, minutes)
     }
 
-    private fun renderSchedule(days: List<ScheduleDay>) {
+    private fun renderSchedule(days: List<ScheduleDay>, pinned: Set<Int>) {
         binding.scheduleContainer.removeAllViews()
         days.sortedBy { it.dayOfWeek }.forEach { day ->
             val dayBinding = ItemScheduleDayBinding.inflate(
                 layoutInflater, binding.scheduleContainer, true
             )
-            bindScheduleDay(dayBinding, day)
+            bindScheduleDay(dayBinding, day, isPinned = day.dayOfWeek in pinned)
         }
     }
 
-    private fun bindScheduleDay(dayBinding: ItemScheduleDayBinding, day: ScheduleDay) {
+    private fun bindScheduleDay(
+        dayBinding: ItemScheduleDayBinding,
+        day: ScheduleDay,
+        isPinned: Boolean
+    ) {
         dayBinding.tvDayName.text = TimeUtils.dayName(day.dayOfWeek)
         dayBinding.switchDayEnabled.isChecked = day.isEnabled
-        dayBinding.timePickers.visibility = if (day.isEnabled) View.VISIBLE else View.GONE
+
+        // Time pickers and chip visible only when day is enabled.
+        val enabledVisibility = if (day.isEnabled) View.VISIBLE else View.GONE
+        dayBinding.timePickers.visibility = enabledVisibility
+        dayBinding.chipCustom.visibility = enabledVisibility
+
+        // Chip reflects sync / custom state.
+        if (isPinned) {
+            dayBinding.chipCustom.setText(R.string.schedule_custom)
+            dayBinding.chipCustom.isSelected = true
+        } else {
+            dayBinding.chipCustom.setText(R.string.schedule_sync)
+            dayBinding.chipCustom.isSelected = false
+        }
 
         dayBinding.tvStartTime.text = TimeUtils.formatTime(day.startHour, day.startMinute)
         dayBinding.tvEndTime.text = TimeUtils.formatTime(day.endHour, day.endMinute)
 
         dayBinding.switchDayEnabled.setOnCheckedChangeListener { _, isChecked ->
-            dayBinding.timePickers.visibility = if (isChecked) View.VISIBLE else View.GONE
+            val enabledVis = if (isChecked) View.VISIBLE else View.GONE
+            dayBinding.timePickers.visibility = enabledVis
+            dayBinding.chipCustom.visibility = enabledVis
             viewModel.updateScheduleDay(day.copy(isEnabled = isChecked))
+        }
+
+        dayBinding.chipCustom.setOnClickListener {
+            viewModel.toggleDayPin(day.dayOfWeek)
         }
 
         dayBinding.tvStartTime.setOnClickListener {
             showTimePicker(day.startHour, day.startMinute) { h, m ->
-                dayBinding.tvStartTime.text = TimeUtils.formatTime(h, m)
-                viewModel.updateScheduleDay(day.copy(startHour = h, startMinute = m))
+                if (isPinned) {
+                    // Pinned: only update this day.
+                    viewModel.updateScheduleDay(day.copy(startHour = h, startMinute = m))
+                } else {
+                    // Synced: propagate new start time to all non-pinned days.
+                    viewModel.updateSharedTime(h, m, day.endHour, day.endMinute)
+                }
             }
         }
 
         dayBinding.tvEndTime.setOnClickListener {
             showTimePicker(day.endHour, day.endMinute) { h, m ->
-                dayBinding.tvEndTime.text = TimeUtils.formatTime(h, m)
-                viewModel.updateScheduleDay(day.copy(endHour = h, endMinute = m))
+                if (isPinned) {
+                    // Pinned: only update this day.
+                    viewModel.updateScheduleDay(day.copy(endHour = h, endMinute = m))
+                } else {
+                    // Synced: propagate new end time to all non-pinned days.
+                    viewModel.updateSharedTime(day.startHour, day.startMinute, h, m)
+                }
             }
         }
     }
