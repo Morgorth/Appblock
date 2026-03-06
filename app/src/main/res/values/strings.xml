@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Appblock</string>
+    <string name="notification_channel_name">Appblock Service</string>
+    <string name="notification_channel_desc">Keeps your app blocks active</string>
+    <string name="notification_title">Appblock is running</string>
+    <string name="notification_text">Your selected apps are blocked</string>
+    <string name="permission_usage_title">Usage access required</string>
+    <string name="permission_usage_message">Appblock needs usage access to detect and block apps. Tap OK to open Settings.</string>
+    <string name="permission_notification_rationale">Appblock needs notification permission to show you when blocks are active on Android 13+.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Base theme: extend Material3 so the app looks correct on Pixel 8/9's
+        default Material You dynamic colour scheme.
+    -->
+    <style name="Theme.Appblock" parent="Theme.Material3.DayNight.NoActionBar">
+        <!--
+            Edge-to-edge: Android 15 (Pixel 9) enforces edge-to-edge by default.
+            Setting both status-bar and nav-bar colours to transparent lets our
+            window-insets code position content correctly on both Pixel 8 and 9.
+        -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!--
+            Opt-in to drawing behind the display cutout (Pixel 8/9 punch-hole).
+            shortEdges allows content to extend into the top cutout area.
+        -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+
+        <!-- Needed so our WindowInsetsController calls take effect correctly -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">false</item>
+    </style>
+</resources>
