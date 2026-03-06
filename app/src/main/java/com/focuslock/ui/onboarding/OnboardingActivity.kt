@@ -139,15 +139,22 @@ class OnboardingActivity : AppCompatActivity() {
                     ivStepIcon.setImageResource(R.drawable.ic_shield)
                     tvStepTitle.setText(R.string.onboarding_accessibility_title)
                     tvStepDescription.setText(R.string.onboarding_accessibility_desc)
-                    btnPrimary.setText(R.string.onboarding_open_settings)
-                    btnSkip.visibility = View.VISIBLE
-                    btnSkip.setText(R.string.onboarding_skip)
-                    btnNext.visibility = if (isGranted) View.VISIBLE else View.GONE
                     statusIcon.setImageResource(
                         if (isGranted) R.drawable.ic_check_circle else R.drawable.ic_info
                     )
                     statusIcon.visibility = View.VISIBLE
-                    btnPrimary.visibility = if (isGranted) View.GONE else View.VISIBLE
+                    if (isGranted) {
+                        btnPrimary.visibility = View.GONE
+                        btnSkip.visibility = View.GONE
+                        btnNext.visibility = View.VISIBLE
+                        btnNext.setText(R.string.onboarding_continue)
+                    } else {
+                        btnPrimary.setText(R.string.onboarding_open_settings)
+                        btnPrimary.visibility = View.VISIBLE
+                        btnSkip.visibility = View.VISIBLE
+                        btnSkip.setText(R.string.onboarding_skip)
+                        btnNext.visibility = View.GONE
+                    }
                 }
                 STEP_BATTERY -> {
                     ivStepIcon.setImageResource(R.drawable.ic_battery)
