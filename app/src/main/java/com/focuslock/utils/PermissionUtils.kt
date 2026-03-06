@@ -6,7 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Process
 import android.provider.Settings
-import androidx.accessibilityservice.AccessibilityServiceInfo
+import android.accessibilityservice.AccessibilityServiceInfo
 import androidx.core.content.ContextCompat
 import com.focuslock.services.FocusLockAccessibilityService
 
