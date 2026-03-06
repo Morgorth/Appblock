@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FocusLock</string>
+
+    <!-- Accessibility service -->
+    <string name="accessibility_service_label">FocusLock App Blocker</string>
+    <string name="accessibility_service_description">FocusLock uses accessibility events as a fallback mechanism to detect when a blocked app is opened, especially on devices where usage stats may be restricted.</string>
+
+    <!-- Notifications -->
+    <string name="notif_blocker_title">FocusLock is active</string>
+    <string name="notif_blocker_text">Monitoring apps to enforce your focus schedules</string>
+    <string name="notif_override_title">Override active: %s</string>
+    <string name="notif_override_text">Block reinstates in %s</string>
+
+    <!-- Onboarding -->
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="onboarding_usage_stats_title">Allow Usage Access</string>
+    <string name="onboarding_usage_stats_desc">FocusLock needs permission to see which app is in the foreground so it can enforce your blocking schedules.\n\nTap the button below, find FocusLock in the list, and enable access.</string>
+    <string name="onboarding_overlay_title">Allow Drawing Over Apps</string>
+    <string name="onboarding_overlay_desc">FocusLock needs permission to draw a block screen on top of apps you\'ve chosen to block.\n\nTap the button below and enable \'Allow display over other apps\' for FocusLock.</string>
+    <string name="onboarding_accessibility_title">Enable Accessibility Service (Recommended)</string>
+    <string name="onboarding_accessibility_desc">The accessibility service provides a second layer of protection — especially useful on Xiaomi, Huawei, and other devices that may restrict background app monitoring.\n\nThis step is optional but strongly recommended for reliable blocking.</string>
+    <string name="onboarding_battery_title">Disable Battery Optimization</string>
+    <string name="onboarding_battery_desc">%s devices sometimes stop background apps to save battery. To ensure FocusLock keeps running, please whitelist it from battery optimization.</string>
+    <string name="onboarding_open_settings">Open Settings</string>
+    <string name="onboarding_open_battery_settings">Open Battery Settings</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="permission_granted">Permission granted</string>
+    <string name="permission_required">Permission required</string>
+
+    <!-- Main screen -->
+    <string name="profiles_empty_state">No profiles yet.\nTap + to create your first focus profile.</string>
+    <string name="new_profile_fab_description">Create new profile</string>
+
+    <!-- Profile editor -->
+    <string name="new_profile">New Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="profile_name_hint">Profile name (e.g. Work Hours)</string>
+    <string name="blocked_apps_section">Blocked Apps</string>
+    <string name="no_apps_selected">No apps selected — tap to choose</string>
+    <string name="schedule_section">Schedule</string>
+    <string name="override_duration_label">Override duration</string>
+    <string name="save">Save</string>
+    <string name="profile_saved">Profile saved</string>
+    <string name="error_profile_name_required">Please enter a profile name</string>
+    <string name="preset_weekdays">Weekdays</string>
+    <string name="preset_weekends">Weekends</string>
+    <string name="preset_every_day">Every Day</string>
+    <string name="start_time">Start</string>
+    <string name="end_time">End</string>
+
+    <!-- Delete profile -->
+    <string name="delete_profile_title">Delete Profile</string>
+    <string name="delete_profile_message">Delete \"%s\"? This cannot be undone.</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- App picker -->
+    <string name="select_apps">Select Apps to Block</string>
+    <string name="done">Done</string>
+    <string name="done_with_count">Done (%d selected)</string>
+    <string name="search_apps">Search apps…</string>
+    <string name="show_system_apps">Show system apps</string>
+
+    <!-- Block overlay -->
+    <string name="blocked_by_profile">Blocked by: %s</string>
+    <string name="block_ends_at">Block ends at %s</string>
+    <string name="go_back">Go Back</string>
+    <string name="emergency_override">Emergency Override</string>
+    <string name="override_prompt">Why do you need access right now?</string>
+    <string name="justification_hint">Type your reason here…</string>
+    <string name="justification_chars_remaining">%d more characters required</string>
+    <string name="confirm_override">Confirm Override</string>
+    <string name="unknown_profile">Unknown Profile</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="default_override_duration">Default override duration</string>
+    <string name="override_history">Override History</string>
+    <string name="view_override_history">View override history</string>
+    <string name="permissions_section">Permissions</string>
+    <string name="permission_usage_stats">Usage Access</string>
+    <string name="permission_overlay">Draw Over Apps</string>
+    <string name="permission_accessibility">Accessibility Service</string>
+    <string name="recheck_permissions">Re-check Permissions</string>
+    <string name="recheck_permissions_title">Permission Setup</string>
+    <string name="recheck_permissions_message">This will take you through the permission setup again. Continue?</string>
+    <string name="open_settings">Open Settings</string>
+
+    <!-- Override history -->
+    <string name="clear_history">Clear History</string>
+    <string name="clear_history_title">Clear History</string>
+    <string name="clear_history_message">This will permanently delete all override log entries.</string>
+    <string name="clear">Clear</string>
+    <string name="history_empty">No override history yet.</string>
+    <string name="duration_label">Duration: %s</string>
+</resources>
