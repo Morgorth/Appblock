@@ -24,19 +24,19 @@ object NotificationUtils {
 
         val blockerChannel = NotificationChannel(
             CHANNEL_BLOCKER,
-            "FocusLock Active",
+            context.getString(R.string.notif_channel_blocker_name),
             NotificationManager.IMPORTANCE_LOW
         ).apply {
-            description = "Shown while FocusLock is monitoring your apps"
+            description = context.getString(R.string.notif_channel_blocker_desc)
             setShowBadge(false)
         }
 
         val overrideChannel = NotificationChannel(
             CHANNEL_OVERRIDE,
-            "Override Countdown",
+            context.getString(R.string.notif_channel_override_name),
             NotificationManager.IMPORTANCE_DEFAULT
         ).apply {
-            description = "Countdown timer shown during an emergency override"
+            description = context.getString(R.string.notif_channel_override_desc)
         }
 
         nm.createNotificationChannels(listOf(blockerChannel, overrideChannel))

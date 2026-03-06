@@ -3,11 +3,17 @@
     <string name="app_name">RealLife Focus</string>
 
     <!-- Accessibility service -->
-    <string name="accessibility_service_label">FocusLock App Blocker</string>
-    <string name="accessibility_service_description">FocusLock uses accessibility events as a fallback mechanism to detect when a blocked app is opened, especially on devices where usage stats may be restricted.</string>
+    <string name="accessibility_service_label">RealLife Focus App Blocker</string>
+    <string name="accessibility_service_description">RealLife Focus uses accessibility events as a fallback mechanism to detect when a blocked app is opened, especially on devices where usage stats may be restricted.</string>
+
+    <!-- Notification channel names (visible in system notification settings) -->
+    <string name="notif_channel_blocker_name">RealLife Focus Active</string>
+    <string name="notif_channel_blocker_desc">Shown while RealLife Focus is monitoring your apps</string>
+    <string name="notif_channel_override_name">Override Countdown</string>
+    <string name="notif_channel_override_desc">Countdown timer shown during an emergency override</string>
 
     <!-- Notifications -->
-    <string name="notif_blocker_title">FocusLock is active</string>
+    <string name="notif_blocker_title">RealLife Focus is active</string>
     <string name="notif_blocker_text">Monitoring apps to enforce your focus schedules</string>
     <string name="notif_override_title">Override active: %s</string>
     <string name="notif_override_text">Block reinstates in %s</string>

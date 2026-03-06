@@ -38,6 +38,8 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     DB_NAME
                 )
+                    // IMPORTANT: before bumping `version`, replace this with
+                    // .addMigrations(MIGRATION_1_2, ...) to preserve user data.
                     .fallbackToDestructiveMigration()
                     .build()
                     .also { INSTANCE = it }
