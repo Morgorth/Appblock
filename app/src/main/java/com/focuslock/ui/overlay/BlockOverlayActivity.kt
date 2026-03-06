@@ -95,6 +95,16 @@ class BlockOverlayActivity : AppCompatActivity() {
             } else {
                 binding.tvBlockEndTime.visibility = View.GONE
             }
+
+            val overrideCount = app.overrideLogRepository.getOverrideCount(blockedPackageName)
+            if (overrideCount > 0) {
+                binding.tvOverrideCount.text = getString(
+                    if (overrideCount == 1) R.string.override_count_shame
+                    else R.string.override_count_shame_plural,
+                    overrideCount
+                )
+                binding.tvOverrideCount.visibility = View.VISIBLE
+            }
         }
     }
 

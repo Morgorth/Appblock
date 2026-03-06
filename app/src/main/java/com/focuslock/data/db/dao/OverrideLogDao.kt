@@ -13,6 +13,9 @@ interface OverrideLogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(log: OverrideLog): Long
 
+    @Query("SELECT COUNT(*) FROM override_logs WHERE packageName = :packageName")
+    suspend fun countByPackage(packageName: String): Int
+
     @Query("DELETE FROM override_logs")
     suspend fun clearAll()
 }

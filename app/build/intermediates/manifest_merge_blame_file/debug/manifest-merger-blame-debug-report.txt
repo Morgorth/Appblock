@@ -1,0 +1,510 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.focuslock"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Required permissions -->
+12    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+12-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:6:5-7:47
+12-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:6:22-75
+13    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+13-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:8:5-78
+13-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:8:22-75
+14    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+14-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:9:5-81
+14-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:9:22-78
+15    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+15-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:10:5-77
+15-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:10:22-74
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+16-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:11:5-89
+16-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:11:22-86
+17    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+17-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:12:5-95
+17-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:12:22-92
+18    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+18-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:13:5-77
+18-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:13:22-74
+19    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+19-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:14:5-15:53
+19-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:14:22-74
+20    <uses-permission android:name="android.permission.WAKE_LOCK" />
+20-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:23:5-68
+20-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:23:22-65
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:24:5-79
+21-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:24:22-76
+22
+23    <permission
+23-->[androidx.core:core:1.12.0] /Users/nathanrudman/.gradle/caches/transforms-3/217cd4443c329c3de6d6b6409afab4f6/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+24        android:name="com.focuslock.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+24-->[androidx.core:core:1.12.0] /Users/nathanrudman/.gradle/caches/transforms-3/217cd4443c329c3de6d6b6409afab4f6/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+25        android:protectionLevel="signature" />
+25-->[androidx.core:core:1.12.0] /Users/nathanrudman/.gradle/caches/transforms-3/217cd4443c329c3de6d6b6409afab4f6/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+26
+27    <uses-permission android:name="com.focuslock.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+27-->[androidx.core:core:1.12.0] /Users/nathanrudman/.gradle/caches/transforms-3/217cd4443c329c3de6d6b6409afab4f6/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+27-->[androidx.core:core:1.12.0] /Users/nathanrudman/.gradle/caches/transforms-3/217cd4443c329c3de6d6b6409afab4f6/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+28
+29    <application
+29-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:17:5-116:19
+30        android:name="com.focuslock.FocusLockApplication"
+30-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:18:9-45
+31        android:allowBackup="true"
+31-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:19:9-35
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.12.0] /Users/nathanrudman/.gradle/caches/transforms-3/217cd4443c329c3de6d6b6409afab4f6/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+33        android:debuggable="true"
+34        android:extractNativeLibs="false"
+35        android:icon="@mipmap/ic_launcher"
+35-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:20:9-43
+36        android:label="@string/app_name"
+36-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:21:9-41
+37        android:networkSecurityConfig="@xml/network_security_config"
+37-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:25:9-69
+38        android:roundIcon="@mipmap/ic_launcher_round"
+38-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:22:9-54
+39        android:supportsRtl="true"
+39-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:23:9-35
+40        android:theme="@style/Theme.FocusLock" >
+40-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:24:9-47
+41
+42        <!-- Onboarding / Splash -->
+43        <activity
+43-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:28:9-36:20
+44            android:name="com.focuslock.ui.onboarding.OnboardingActivity"
+44-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:29:13-61
+45            android:exported="true"
+45-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:30:13-36
+46            android:screenOrientation="portrait" >
+46-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:31:13-49
+47            <intent-filter>
+47-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:32:13-35:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:33:17-69
+48-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:33:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:34:17-77
+50-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:34:27-74
+51            </intent-filter>
+52        </activity>
+53
+54        <!-- Main screen -->
+55        <activity
+55-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:39:9-42:52
+56            android:name="com.focuslock.ui.main.MainActivity"
+56-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:40:13-49
+57            android:exported="false"
+57-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:41:13-37
+58            android:screenOrientation="portrait" />
+58-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:42:13-49
+59
+60        <!-- Profile editor -->
+61        <activity
+61-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:45:9-49:66
+62            android:name="com.focuslock.ui.profile.ProfileEditorActivity"
+62-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:46:13-61
+63            android:exported="false"
+63-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:47:13-37
+64            android:parentActivityName="com.focuslock.ui.main.MainActivity"
+64-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:49:13-63
+65            android:screenOrientation="portrait" />
+65-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:48:13-49
+66
+67        <!-- App picker -->
+68        <activity
+68-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:52:9-56:78
+69            android:name="com.focuslock.ui.apps.AppPickerActivity"
+69-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:53:13-54
+70            android:exported="false"
+70-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:54:13-37
+71            android:parentActivityName="com.focuslock.ui.profile.ProfileEditorActivity"
+71-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:56:13-75
+72            android:screenOrientation="portrait" />
+72-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:55:13-49
+73
+74        <!-- Block overlay: must be shown on top of other apps -->
+75        <activity
+75-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:59:9-66:62
+76            android:name="com.focuslock.ui.overlay.BlockOverlayActivity"
+76-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:60:13-60
+77            android:excludeFromRecents="true"
+77-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:62:13-46
+78            android:exported="false"
+78-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:61:13-37
+79            android:launchMode="singleInstance"
+79-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:63:13-48
+80            android:screenOrientation="portrait"
+80-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:64:13-49
+81            android:showOnLockScreen="true"
+81-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:65:13-44
+82            android:theme="@style/Theme.FocusLock.Overlay" />
+82-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:66:13-59
+83
+84        <!-- Settings -->
+85        <activity
+85-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:69:9-73:66
+86            android:name="com.focuslock.ui.settings.SettingsActivity"
+86-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:70:13-57
+87            android:exported="false"
+87-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:71:13-37
+88            android:parentActivityName="com.focuslock.ui.main.MainActivity"
+88-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:73:13-63
+89            android:screenOrientation="portrait" />
+89-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:72:13-49
+90
+91        <!-- Override history -->
+92        <activity
+92-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:76:9-80:74
+93            android:name="com.focuslock.ui.history.OverrideHistoryActivity"
+93-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:77:13-63
+94            android:exported="false"
+94-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:78:13-37
+95            android:parentActivityName="com.focuslock.ui.settings.SettingsActivity"
+95-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:80:13-71
+96            android:screenOrientation="portrait" />
+96-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:79:13-49
+97
+98        <!-- Background blocker service -->
+99        <service
+99-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:83:9-90:19
+100            android:name="com.focuslock.services.BlockerService"
+100-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:84:13-52
+101            android:exported="false"
+101-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:85:13-37
+102            android:foregroundServiceType="specialUse" >
+102-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:86:13-55
+103            <property
+103-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:87:13-89:92
+104                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+104-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:88:17-76
+105                android:value="Monitor foreground app to enforce app blocking schedules" />
+105-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:89:17-89
+106        </service>
+107
+108        <!-- Accessibility service for fallback foreground detection -->
+109        <service
+109-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:93:9-104:19
+110            android:name="com.focuslock.services.FocusLockAccessibilityService"
+110-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:94:13-67
+111            android:exported="true"
+111-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:95:13-36
+112            android:label="@string/accessibility_service_label"
+112-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:96:13-64
+113            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+113-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:97:13-79
+114            <intent-filter>
+114-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:98:13-100:29
+115                <action android:name="android.accessibilityservice.AccessibilityService" />
+115-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:99:17-92
+115-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:99:25-89
+116            </intent-filter>
+117
+118            <meta-data
+118-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:101:13-103:72
+119                android:name="android.accessibilityservice"
+119-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:102:17-60
+120                android:resource="@xml/accessibility_service_config" />
+120-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:103:17-69
+121        </service>
+122
+123        <!-- Boot receiver to restart service after reboot -->
+124        <receiver
+124-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:107:9-114:20
+125            android:name="com.focuslock.services.BootReceiver"
+125-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:108:13-50
+126            android:exported="true" >
+126-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:109:13-36
+127            <intent-filter>
+127-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:110:13-113:29
+128                <action android:name="android.intent.action.BOOT_COMPLETED" />
+128-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:111:17-79
+128-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:111:25-76
+129                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+129-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:112:17-84
+129-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:112:25-81
+130            </intent-filter>
+131        </receiver>
+132
+133        <provider
+133-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+134            android:name="androidx.startup.InitializationProvider"
+134-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+135            android:authorities="com.focuslock.androidx-startup"
+135-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+136            android:exported="false" >
+136-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+137            <meta-data
+137-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+138                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+138-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+139                android:value="androidx.startup" />
+139-->[androidx.emoji2:emoji2:1.2.0] /Users/nathanrudman/.gradle/caches/transforms-3/11131d099be9c123d2514ae5f1228212/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+140            <meta-data
+140-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:34:13-36:52
+141                android:name="androidx.work.WorkManagerInitializer"
+141-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:35:17-68
+142                android:value="androidx.startup" />
+142-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:36:17-49
+143            <meta-data
+143-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nathanrudman/.gradle/caches/transforms-3/d2d75e56b3ef6b52e231fb5b652ef29f/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+144                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+144-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nathanrudman/.gradle/caches/transforms-3/d2d75e56b3ef6b52e231fb5b652ef29f/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+145                android:value="androidx.startup" />
+145-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/nathanrudman/.gradle/caches/transforms-3/d2d75e56b3ef6b52e231fb5b652ef29f/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+146            <meta-data
+146-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+147                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+148                android:value="androidx.startup" />
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+149        </provider>
+150
+151        <service
+151-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:39:9-45:35
+152            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+152-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:40:13-88
+153            android:directBootAware="false"
+153-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:41:13-44
+154            android:enabled="@bool/enable_system_alarm_service_default"
+154-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:42:13-72
+155            android:exported="false" />
+155-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:43:13-37
+156        <service
+156-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:46:9-52:35
+157            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+157-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:47:13-84
+158            android:directBootAware="false"
+158-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:48:13-44
+159            android:enabled="@bool/enable_system_job_service_default"
+159-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:49:13-70
+160            android:exported="true"
+160-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:50:13-36
+161            android:permission="android.permission.BIND_JOB_SERVICE" />
+161-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:51:13-69
+162        <service
+162-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:53:9-59:35
+163            android:name="androidx.work.impl.foreground.SystemForegroundService"
+163-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:54:13-81
+164            android:directBootAware="false"
+164-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:55:13-44
+165            android:enabled="@bool/enable_system_foreground_service_default"
+165-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:56:13-77
+166            android:exported="false" />
+166-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:57:13-37
+167
+168        <receiver
+168-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:61:9-66:35
+169            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+169-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:62:13-88
+170            android:directBootAware="false"
+170-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:63:13-44
+171            android:enabled="true"
+171-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:64:13-35
+172            android:exported="false" />
+172-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:65:13-37
+173        <receiver
+173-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:67:9-77:20
+174            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+174-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:68:13-106
+175            android:directBootAware="false"
+175-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:69:13-44
+176            android:enabled="false"
+176-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:70:13-36
+177            android:exported="false" >
+177-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:71:13-37
+178            <intent-filter>
+178-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:73:13-76:29
+179                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+179-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:17-87
+179-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:25-84
+180                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+180-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:17-90
+180-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:25-87
+181            </intent-filter>
+182        </receiver>
+183        <receiver
+183-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:78:9-88:20
+184            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+184-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:79:13-104
+185            android:directBootAware="false"
+185-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:80:13-44
+186            android:enabled="false"
+186-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:81:13-36
+187            android:exported="false" >
+187-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:82:13-37
+188            <intent-filter>
+188-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:84:13-87:29
+189                <action android:name="android.intent.action.BATTERY_OKAY" />
+189-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:17-77
+189-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:25-74
+190                <action android:name="android.intent.action.BATTERY_LOW" />
+190-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:17-76
+190-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:25-73
+191            </intent-filter>
+192        </receiver>
+193        <receiver
+193-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:89:9-99:20
+194            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+194-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:90:13-104
+195            android:directBootAware="false"
+195-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:91:13-44
+196            android:enabled="false"
+196-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:92:13-36
+197            android:exported="false" >
+197-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:93:13-37
+198            <intent-filter>
+198-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:95:13-98:29
+199                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+199-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:17-83
+199-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:25-80
+200                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+200-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:17-82
+200-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:25-79
+201            </intent-filter>
+202        </receiver>
+203        <receiver
+203-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:100:9-109:20
+204            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+204-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:101:13-103
+205            android:directBootAware="false"
+205-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:102:13-44
+206            android:enabled="false"
+206-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:103:13-36
+207            android:exported="false" >
+207-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:104:13-37
+208            <intent-filter>
+208-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:106:13-108:29
+209                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+209-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:17-79
+209-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:25-76
+210            </intent-filter>
+211        </receiver>
+212        <receiver
+212-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:110:9-121:20
+213            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+213-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:111:13-88
+214            android:directBootAware="false"
+214-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:112:13-44
+215            android:enabled="false"
+215-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:113:13-36
+216            android:exported="false" >
+216-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:114:13-37
+217            <intent-filter>
+217-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:116:13-120:29
+218                <action android:name="android.intent.action.BOOT_COMPLETED" />
+218-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:111:17-79
+218-->/Users/nathanrudman/Appblock/app/src/main/AndroidManifest.xml:111:25-76
+219                <action android:name="android.intent.action.TIME_SET" />
+219-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:17-73
+219-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:25-70
+220                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+220-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:17-81
+220-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:25-78
+221            </intent-filter>
+222        </receiver>
+223        <receiver
+223-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:122:9-131:20
+224            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+224-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:123:13-99
+225            android:directBootAware="false"
+225-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:124:13-44
+226            android:enabled="@bool/enable_system_alarm_service_default"
+226-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:125:13-72
+227            android:exported="false" >
+227-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:126:13-37
+228            <intent-filter>
+228-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:128:13-130:29
+229                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+229-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:17-98
+229-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:25-95
+230            </intent-filter>
+231        </receiver>
+232        <receiver
+232-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:132:9-142:20
+233            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+233-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:133:13-78
+234            android:directBootAware="false"
+234-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:134:13-44
+235            android:enabled="true"
+235-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:135:13-35
+236            android:exported="true"
+236-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:136:13-36
+237            android:permission="android.permission.DUMP" >
+237-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:137:13-57
+238            <intent-filter>
+238-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:139:13-141:29
+239                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+239-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
+239-->[androidx.work:work-runtime:2.9.0] /Users/nathanrudman/.gradle/caches/transforms-3/3f1d6d526c0a2668587ec5415784a0f9/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
+240            </intent-filter>
+241        </receiver>
+242
+243        <uses-library
+243-->[androidx.window:window:1.0.0] /Users/nathanrudman/.gradle/caches/transforms-3/29e6f93e95e9d50473b75927bc24cd60/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
+244            android:name="androidx.window.extensions"
+244-->[androidx.window:window:1.0.0] /Users/nathanrudman/.gradle/caches/transforms-3/29e6f93e95e9d50473b75927bc24cd60/transformed/jetified-window-1.0.0/AndroidManifest.xml:26:13-54
+245            android:required="false" />
+245-->[androidx.window:window:1.0.0] /Users/nathanrudman/.gradle/caches/transforms-3/29e6f93e95e9d50473b75927bc24cd60/transformed/jetified-window-1.0.0/AndroidManifest.xml:27:13-37
+246        <uses-library
+246-->[androidx.window:window:1.0.0] /Users/nathanrudman/.gradle/caches/transforms-3/29e6f93e95e9d50473b75927bc24cd60/transformed/jetified-window-1.0.0/AndroidManifest.xml:28:9-30:40
+247            android:name="androidx.window.sidecar"
+247-->[androidx.window:window:1.0.0] /Users/nathanrudman/.gradle/caches/transforms-3/29e6f93e95e9d50473b75927bc24cd60/transformed/jetified-window-1.0.0/AndroidManifest.xml:29:13-51
+248            android:required="false" />
+248-->[androidx.window:window:1.0.0] /Users/nathanrudman/.gradle/caches/transforms-3/29e6f93e95e9d50473b75927bc24cd60/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
+249
+250        <service
+250-->[androidx.room:room-runtime:2.6.1] /Users/nathanrudman/.gradle/caches/transforms-3/1e2e59a8302aa68180f52fc1e2899de7/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+251            android:name="androidx.room.MultiInstanceInvalidationService"
+251-->[androidx.room:room-runtime:2.6.1] /Users/nathanrudman/.gradle/caches/transforms-3/1e2e59a8302aa68180f52fc1e2899de7/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+252            android:directBootAware="true"
+252-->[androidx.room:room-runtime:2.6.1] /Users/nathanrudman/.gradle/caches/transforms-3/1e2e59a8302aa68180f52fc1e2899de7/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+253            android:exported="false" />
+253-->[androidx.room:room-runtime:2.6.1] /Users/nathanrudman/.gradle/caches/transforms-3/1e2e59a8302aa68180f52fc1e2899de7/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+254
+255        <receiver
+255-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+256            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+256-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+257            android:directBootAware="false"
+257-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+258            android:enabled="true"
+258-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+259            android:exported="true"
+259-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+260            android:permission="android.permission.DUMP" >
+260-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+261            <intent-filter>
+261-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+262                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+262-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+262-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+263            </intent-filter>
+264            <intent-filter>
+264-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+265                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+265-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+265-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+266            </intent-filter>
+267            <intent-filter>
+267-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+268                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+268-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+268-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+269            </intent-filter>
+270            <intent-filter>
+270-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+271                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+271-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+271-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/nathanrudman/.gradle/caches/transforms-3/6630f9e478ec6811137c4ffff203277a/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+272            </intent-filter>
+273        </receiver>
+274    </application>
+275
+276</manifest>

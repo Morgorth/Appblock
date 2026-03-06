@@ -66,6 +66,8 @@
     <!-- Block overlay -->
     <string name="blocked_by_profile">Blocked by: %s</string>
     <string name="block_ends_at">Block ends at %s</string>
+    <string name="override_count_shame">You\'ve unlocked this %d time before.</string>
+    <string name="override_count_shame_plural">You\'ve unlocked this %d times before.</string>
     <string name="go_back">Go Back</string>
     <string name="emergency_override">Emergency Override</string>
     <string name="override_prompt">Why do you need access right now?</string>
