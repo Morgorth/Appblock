@@ -1,6 +1,5 @@
 package com.focuslock.services
 
-import android.app.Service
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent

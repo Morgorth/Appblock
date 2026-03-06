@@ -1,93 +1,168 @@
-# FocusLock
+# RealLife Focus
 
-**Android Application Blocker** — v1.0
+![Android CI](https://github.com/Morgorth/Appblock/actions/workflows/android.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Min SDK](https://img.shields.io/badge/Android-8.0%2B-green.svg)
+![Target SDK](https://img.shields.io/badge/Target-API%2034-green.svg)
 
-FocusLock helps users take control of their phone habits by blocking access to selected apps on a configurable schedule. The core philosophy is honest self-accountability: the user can always override a block in an emergency, but the friction of having to justify the override in writing is the primary deterrent.
+**RealLife Focus** is a free, open-source Android app blocker that helps you take back control of
+your phone habits. Block distracting apps on a configurable schedule — and if you need access in
+an emergency, you can override the block, but only after writing a reason. The friction of
+justifying yourself is the point.
+
+> **Fully offline.** No accounts, no network, no data ever leaves your device.
+
+---
 
 ## Features
 
-- **App blocking schedules** — Block any user-installed app during user-defined time windows
-- **Multiple profiles** — Create named profiles (e.g. "Work Hours", "Sleep Time", "Weekend Focus") with independent per-day-of-week schedules
-- **Overnight schedules** — Supports windows that span midnight (e.g. 22:00–07:00)
-- **Emergency override** — Bypass a block with mandatory written justification (minimum 20 characters); auto-reinstates after a configurable window (1–30 min, default 5 min)
-- **Override history** — Local log of all overrides with justification text, timestamps, and app details
-- **Fully offline** — No accounts, no network, no cloud sync
+- **App blocking schedules** — block any user-installed app during named time windows
+- **Multiple profiles** — "Work Hours", "Sleep Time", "Weekend Focus" — each with independent per-day-of-week schedules
+- **Overnight support** — windows that span midnight (e.g. 22:00–07:00) work correctly
+- **Emergency override** — bypass a block with a mandatory written justification (≥20 characters); automatically reinstates after 1–30 min (configurable)
+- **Override history** — local audit log of every override with justification, timestamp, and app details
+- **Shame counter** — the overlay shows how many times you've already overridden a given app this session
+- **OEM reliability** — dual detection via UsageStatsManager + AccessibilityService fallback for Xiaomi, Huawei, and other restrictive OEMs
+- **WorkManager watchdog** — restarts the service every 15 minutes if killed by battery optimisation
+- **Boot persistence** — service restarts automatically after reboot or app update
 
-## Technical Architecture
+---
 
-### Android API Requirements
-- **Minimum SDK**: API 26 (Android 8.0)
-- **Target SDK**: API 34 (Android 14)
+## Installation
 
-### Required Permissions
-| Permission | Purpose |
+### From Google Play
+*(Coming soon)*
+
+### Build from Source
+
+**Requirements:**
+- Android Studio Hedgehog (2023.1.1) or later
+- JDK 17
+- Android SDK with API 26–34
+
+```bash
+git clone https://github.com/Morgorth/Appblock.git
+cd Appblock
+./gradlew assembleDebug
+# Install on a connected device:
+./gradlew installDebug
+```
+
+The release APK is built with:
+```bash
+./gradlew assembleRelease
+```
+Output: `app/build/outputs/apk/release/app-release.apk`
+
+---
+
+## Required Permissions
+
+| Permission | Why it's needed |
 |---|---|
-| `PACKAGE_USAGE_STATS` | Detect foreground app via UsageStatsManager (primary) |
-| `SYSTEM_ALERT_WINDOW` | Display block overlay above blocked apps |
-| `BIND_ACCESSIBILITY_SERVICE` | Fallback foreground detection (OEM-reliable) |
-| `RECEIVE_BOOT_COMPLETED` | Restart service after reboot |
-| `FOREGROUND_SERVICE` | Keep monitoring service alive |
+| `PACKAGE_USAGE_STATS` | Detect which app is in the foreground (primary method) |
+| `SYSTEM_ALERT_WINDOW` | Draw the block overlay above other apps |
+| `BIND_ACCESSIBILITY_SERVICE` | Fallback foreground detection on restrictive OEMs |
+| `RECEIVE_BOOT_COMPLETED` | Restart the service after reboot |
+| `FOREGROUND_SERVICE` | Keep the monitoring service alive in the background |
+| `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` | Prevent OEMs from killing the service |
+| `QUERY_ALL_PACKAGES` | Enumerate installed apps in the app picker |
+| `POST_NOTIFICATIONS` | Show the persistent status notification (Android 13+) |
 
-### Architecture Components
+All sensitive permissions are explained during onboarding, with direct links to the relevant system settings screen.
+
+---
+
+## Architecture
+
+```
+Activity/Fragment → ViewModel → Repository → DAO → Room DB
+                                    ↓
+                              LiveData pushes updates back to UI
+```
+
 - **MVVM** with `ViewModel` + `LiveData`
-- **Room** (SQLite) for local data persistence
-- **WorkManager** for watchdog periodic task (restarts service if killed by OEM)
-- **LifecycleService** for the background blocker service
+- **Room** (SQLite) for all local persistence
+- **WorkManager** for the 15-minute watchdog
+- **LifecycleService** for the foreground blocker service
+- **Kotlin Coroutines** throughout — `viewModelScope` in ViewModels, `Dispatchers.IO` in services
 
 ### Project Structure
+
 ```
 app/src/main/java/com/focuslock/
 ├── FocusLockApplication.kt        # App singleton, DI root
 ├── data/
 │   ├── db/
-│   │   ├── AppDatabase.kt         # Room database
+│   │   ├── AppDatabase.kt         # Room database (v1)
 │   │   ├── dao/                   # DAO interfaces
 │   │   └── entities/              # Room entities
-│   └── repository/                # Repository layer
+│   └── repository/                # Single source of truth
 ├── services/
-│   ├── BlockerService.kt          # Foreground service (UsageStats polling)
+│   ├── BlockerService.kt          # Foreground service — UsageStats polling (1500ms)
 │   ├── FocusLockAccessibilityService.kt  # Accessibility fallback
-│   ├── BootReceiver.kt            # Restarts service after reboot
-│   └── BlockerWatchdogWorker.kt   # WorkManager watchdog
+│   ├── BootReceiver.kt            # Restarts service after reboot / update
+│   └── BlockerWatchdogWorker.kt   # WorkManager watchdog (15 min)
 ├── ui/
 │   ├── onboarding/                # Multi-step permission setup
-│   ├── main/                      # Profile list screen
-│   ├── profile/                   # Profile editor
-│   ├── apps/                      # App picker
+│   ├── main/                      # Profile list
+│   ├── profile/                   # Profile editor + schedule
+│   ├── apps/                      # App picker (multi-select)
 │   ├── overlay/                   # Block overlay screen
 │   ├── settings/                  # Global settings
-│   └── history/                   # Override history
+│   └── history/                   # Override audit log
 ├── viewmodel/                     # ViewModels
-└── utils/                         # Permission, OEM, time utilities
+└── utils/                         # Permissions, OEM detection, time helpers
 ```
 
-## Building
-
-1. Open in Android Studio (Hedgehog or later)
-2. Sync Gradle
-3. Build → Make Project
-
-```bash
-./gradlew assembleDebug
-```
+---
 
 ## Key Design Decisions
 
 ### Blocking Mechanism
-The `BlockerService` runs as a persistent foreground service and polls `UsageStatsManager.queryUsageStats()` every 1500ms. When a blocked app is detected during an active schedule window, it launches `BlockOverlayActivity` with `FLAG_ACTIVITY_NEW_TASK` to appear on top.
+`BlockerService` polls `UsageStatsManager.queryUsageStats()` every 1500ms. When a blocked app
+is detected during an active schedule window, it launches `BlockOverlayActivity` with
+`FLAG_ACTIVITY_NEW_TASK` to appear on top.
 
 ### Accessibility Fallback
-`FocusLockAccessibilityService` listens for `TYPE_WINDOW_STATE_CHANGED` events as a complementary mechanism. This is especially important on Xiaomi (MIUI), Huawei (EMUI), and other OEMs that restrict `UsageStatsManager` access for background processes.
+`FocusLockAccessibilityService` listens for `TYPE_WINDOW_STATE_CHANGED` events as a second layer.
+This is critical on Xiaomi (MIUI), Huawei (EMUI), and Samsung OneUI, which restrict background
+UsageStats access for third-party apps.
 
 ### Override Friction
-The override requires the user to type at least 20 characters of justification before the confirm button activates. There is no PIN or secondary confirmation — the friction is entirely the act of writing a reason. This is intentional: the goal is self-reflection, not an unbreakable lock.
+The override requires at least 20 characters of justification before the confirm button activates.
+There is no PIN, no secondary confirmation, no timer. The friction is entirely the act of writing
+a reason — enough to cause a moment of reflection, not enough to be unbreakable.
 
-### OEM Battery Whitelisting
-On detected problematic OEMs (Xiaomi, Huawei, Samsung, OPPO, Vivo, OnePlus), the onboarding flow prompts users to whitelist FocusLock in the manufacturer's battery settings to prevent the service from being killed.
+### Schedule Logic (overnight support)
+```kotlin
+if (endMins > startMins) currentMins in startMins until endMins  // normal
+else currentMins >= startMins || currentMins < endMins             // overnight
+```
 
-## Out of Scope (v1)
-- Website / browser blocking
-- Remote management or family controls
-- Cloud backup of profiles
-- iOS version
-- Scheduled daily limits (e.g. "2 hrs/day max")
+Day mapping: 1 = Monday … 7 = Sunday (not Android's Calendar 1 = Sunday).
+
+---
+
+## Privacy
+
+RealLife Focus processes everything locally:
+- No network requests are made (enforced via `network-security-config`)
+- No analytics, no crash reporting, no telemetry
+- No account required
+- All data (profiles, schedules, override history) is stored in a local SQLite database that stays on your device
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to set up the project, the architecture rules,
+and the PR process.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
+
+## License
+
+[MIT](LICENSE) © RealLife Focus contributors
