@@ -106,4 +106,9 @@
     <string name="clear">Clear</string>
     <string name="history_empty">No override history yet.</string>
     <string name="duration_label">Duration: %s</string>
+
+    <!-- Activity summary card -->
+    <string name="stat_label_free_at">Free at</string>
+    <string name="stat_label_status">Status</string>
+    <string name="stat_value_open">Open</string>
 </resources>

@@ -16,6 +16,9 @@ interface OverrideLogDao {
     @Query("SELECT COUNT(*) FROM override_logs WHERE packageName = :packageName")
     suspend fun countByPackage(packageName: String): Int
 
+    @Query("SELECT COUNT(*) FROM override_logs")
+    suspend fun getTotalCount(): Int
+
     @Query("DELETE FROM override_logs")
     suspend fun clearAll()
 }

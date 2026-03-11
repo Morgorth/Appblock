@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -9,14 +9,27 @@
     android:layout_marginBottom="@dimen/spacing_sm"
     android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/card_corner_radius"
-    app:cardElevation="@dimen/card_elevation">
+    app:cardElevation="@dimen/card_elevation"
+    app:strokeColor="@color/card_border"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="@dimen/spacing_md">
+        android:paddingStart="@dimen/spacing_md"
+        android:paddingEnd="@dimen/spacing_sm"
+        android:paddingTop="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_md">
+
+        <!-- Left accent bar -->
+        <View
+            android:layout_width="3dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="@dimen/spacing_md"
+            android:background="@color/primary"
+            android:backgroundTint="@color/primary" />
 
         <!-- Profile name and summary -->
         <LinearLayout
@@ -30,8 +43,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/on_background"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.01" />
 
         </LinearLayout>
 
@@ -50,8 +64,8 @@
             android:id="@+id/switch_enabled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_sm" />
+            android:layout_marginStart="@dimen/spacing_xs" />
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

@@ -16,25 +16,44 @@
         <item name="android:textColorPrimary">@color/on_background</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
 
-        <!-- Status bar matches deep background -->
+        <!-- Status bar blends into background -->
         <item name="android:statusBarColor">@color/background</item>
         <item name="android:navigationBarColor">@color/background</item>
-
-        <!-- Light status bar icons = false so icons show white on dark bar -->
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
 
-        <!-- Ripple / selection colors pick up primary cyan -->
-        <item name="colorControlHighlight">#3300D4FF</item>
+        <!-- Soft periwinkle ripple -->
+        <item name="colorControlHighlight">@color/primary_glow</item>
+
+        <!-- Seamless dark toolbar — no colored bar -->
+        <item name="toolbarStyle">@style/Widget.FocusLock.Toolbar</item>
+
+        <!-- Rounded buttons -->
+        <item name="materialButtonStyle">@style/Widget.FocusLock.Button</item>
+    </style>
+
+    <!-- Toolbar: blends into background, title uses primary periwinkle -->
+    <style name="Widget.FocusLock.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/background</item>
+        <item name="titleTextColor">@color/primary</item>
+        <item name="subtitleTextColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Rounded pill buttons -->
+    <style name="Widget.FocusLock.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
     </style>
 
     <!-- Overlay activity: no title bar, full screen -->
     <style name="Theme.FocusLock.Overlay" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="android:colorBackground">@color/background</item>
         <item name="android:windowBackground">@color/overlay_background</item>
         <item name="android:statusBarColor">@color/background</item>
         <item name="android:navigationBarColor">@color/background</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowIsTranslucent">false</item>
+        <item name="materialButtonStyle">@style/Widget.FocusLock.Button</item>
     </style>
 </resources>

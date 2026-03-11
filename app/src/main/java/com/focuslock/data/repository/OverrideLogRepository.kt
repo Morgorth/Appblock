@@ -28,5 +28,7 @@ class OverrideLogRepository(private val overrideLogDao: OverrideLogDao) {
     suspend fun getOverrideCount(packageName: String): Int =
         overrideLogDao.countByPackage(packageName)
 
+    suspend fun getTotalCount(): Int = overrideLogDao.getTotalCount()
+
     suspend fun clearAll() = overrideLogDao.clearAll()
 }

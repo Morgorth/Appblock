@@ -12,15 +12,19 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_xl">
+        android:paddingHorizontal="@dimen/spacing_lg"
+        android:paddingTop="@dimen/spacing_xl"
+        android:paddingBottom="@dimen/spacing_xl">
 
-        <!-- Blocked app icon -->
+        <!-- Blocked app icon with soft glow ring -->
         <ImageView
             android:id="@+id/iv_blocked_app_icon"
-            android:layout_width="@dimen/app_icon_size_large"
-            android:layout_height="@dimen/app_icon_size_large"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
             android:layout_marginTop="@dimen/spacing_xl"
-            android:layout_marginBottom="@dimen/spacing_md"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            android:padding="8dp"
+            android:background="@drawable/bg_app_icon_ring"
             android:src="@android:drawable/sym_def_app_icon" />
 
         <!-- Blocked app name -->
@@ -29,17 +33,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_sm"
-            android:textColor="@color/on_primary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textColor="@color/on_background"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.01" />
 
         <!-- Profile name -->
         <TextView
             android:id="@+id/tv_profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_sm"
-            android:textColor="#B3FFFFFF"
+            android:layout_marginBottom="@dimen/spacing_xs"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp" />
 
         <!-- Block end time -->
@@ -48,8 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_xl"
-            android:textColor="#B3FFFFFF"
-            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
             android:visibility="gone" />
 
         <!-- Shame counter -->
@@ -57,24 +62,24 @@
             android:id="@+id/tv_override_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_xl"
-            android:textColor="#FFB74D"
-            android:textSize="14sp"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            android:textColor="@color/warning_amber"
+            android:textSize="13sp"
             android:textStyle="italic"
             android:visibility="gone" />
 
-        <!-- Go Back button (prominent) -->
+        <!-- Go Back button (prominent pill) -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_go_back"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_button_height"
             android:layout_marginBottom="@dimen/spacing_md"
             android:text="@string/go_back"
-            android:textSize="18sp"
-            android:backgroundTint="@color/on_primary"
-            android:textColor="@color/primary" />
+            android:textSize="17sp"
+            android:textColor="@color/background"
+            android:backgroundTint="@color/primary" />
 
-        <!-- Emergency Override button (less prominent) -->
+        <!-- Emergency Override button (subtle) -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_emergency_override"
             android:layout_width="wrap_content"
@@ -83,7 +88,7 @@
             android:text="@string/emergency_override"
             android:textSize="14sp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textColor="#80FFFFFF" />
+            android:textColor="@color/text_secondary" />
 
         <!-- Override container (shown/hidden) -->
         <LinearLayout
@@ -100,9 +105,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_sm"
                 android:text="@string/override_prompt"
-                android:textColor="@color/on_background"
+                android:textColor="@color/on_surface"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:letterSpacing="0.01" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

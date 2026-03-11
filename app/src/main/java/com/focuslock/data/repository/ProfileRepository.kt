@@ -130,6 +130,37 @@ class ProfileRepository(
     }
 
     /**
+     * Returns the earliest end time (hour, minute) of any currently active blocking window,
+     * across all enabled profiles. Returns null if nothing is actively blocked.
+     */
+    suspend fun getEarliestBlockEndTime(): Pair<Int, Int>? {
+        val enabledProfiles = profileDao.getEnabledProfiles()
+        if (enabledProfiles.isEmpty()) return null
+
+        val now = java.util.Calendar.getInstance()
+        val currentDayOfWeek = now.get(java.util.Calendar.DAY_OF_WEEK)
+        val dayOfWeek = if (currentDayOfWeek == java.util.Calendar.SUNDAY) 7
+        else currentDayOfWeek - 1
+        val currentHour = now.get(java.util.Calendar.HOUR_OF_DAY)
+        val currentMinute = now.get(java.util.Calendar.MINUTE)
+
+        var earliestEndMins: Int? = null
+        for (profile in enabledProfiles) {
+            val schedule = scheduleDayDao.getScheduleForProfile(profile.id)
+            val todaySchedule = schedule.find { it.dayOfWeek == dayOfWeek }
+            if (todaySchedule != null && todaySchedule.isEnabled &&
+                isTimeInWindow(currentHour, currentMinute, todaySchedule)
+            ) {
+                val endMins = todaySchedule.endHour * 60 + todaySchedule.endMinute
+                if (earliestEndMins == null || endMins < earliestEndMins) {
+                    earliestEndMins = endMins
+                }
+            }
+        }
+        return earliestEndMins?.let { Pair(it / 60, it % 60) }
+    }
+
+    /**
      * Returns the end time (hour, minute) of the blocking window for a given package.
      * Returns null if no active block.
      */
