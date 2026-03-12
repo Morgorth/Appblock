@@ -1,6 +1,7 @@
 package com.focuslock.utils
 
 import android.app.AppOpsManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -9,6 +10,7 @@ import android.provider.Settings
 import android.accessibilityservice.AccessibilityServiceInfo
 import androidx.core.content.ContextCompat
 import com.focuslock.services.FocusLockAccessibilityService
+import com.focuslock.services.NotificationMuterService
 
 object PermissionUtils {
 
@@ -54,6 +56,18 @@ object PermissionUtils {
             Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
             Uri.parse("package:${context.packageName}")
         )
+
+    fun hasNotificationListenerPermission(context: Context): Boolean {
+        val flat = Settings.Secure.getString(
+            context.contentResolver,
+            "enabled_notification_listeners"
+        ) ?: return false
+        val component = ComponentName(context, NotificationMuterService::class.java)
+        return flat.contains(component.flattenToString())
+    }
+
+    fun getNotificationListenerIntent(): Intent =
+        Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
 
     fun allCorePermissionsGranted(context: Context): Boolean =
         hasUsageStatsPermission(context) && hasOverlayPermission(context)

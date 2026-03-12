@@ -111,4 +111,36 @@
     <string name="stat_label_free_at">Free at</string>
     <string name="stat_label_status">Status</string>
     <string name="stat_value_open">Open</string>
+
+    <!-- Notification mute rules -->
+    <string name="mute_rules_section">Notification Mute</string>
+    <string name="mute_rules_empty_state">No mute rules yet. Tap + to add one.</string>
+    <string name="new_mute_rule">New mute rule</string>
+    <string name="edit_mute_rule">Edit mute rule</string>
+    <string name="mute_rule_name_hint">Rule name (e.g. Out of Office)</string>
+    <string name="muted_apps_section">Muted Apps</string>
+    <string name="mute_rule_saved">Mute rule saved</string>
+    <string name="delete_mute_rule_title">Delete mute rule?</string>
+    <string name="delete_mute_rule_message">Delete \"%s\"?</string>
+    <string name="error_no_apps_selected">Select at least one app to mute</string>
+
+    <!-- Schedule types -->
+    <string name="schedule_type_date_range">Date range</string>
+    <string name="schedule_type_weekdays">Weekdays</string>
+    <string name="schedule_type_weekends">Weekends</string>
+    <string name="schedule_type_every_day">Every day</string>
+
+    <!-- Date / time labels -->
+    <string name="start_date">From</string>
+    <string name="end_date">Until</string>
+    <string name="pick_date">Pick date</string>
+    <string name="limit_to_hours">Limit to specific hours</string>
+    <string name="from_label">From</string>
+    <string name="to_label">to</string>
+
+    <!-- Notification listener permission -->
+    <string name="notif_listener_title">Notification access needed</string>
+    <string name="notif_listener_message">To mute notifications from specific apps, Focus Real Life needs Notification Access. Tap Grant to enable it in system settings.</string>
+    <string name="grant">Grant</string>
+    <string name="not_now">Not now</string>
 </resources>

@@ -16,8 +16,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = (application as FocusLockApplication).profileRepository
     private val overrideLogRepository = (application as FocusLockApplication).overrideLogRepository
+    private val muteRuleRepository = (application as FocusLockApplication).muteRuleRepository
 
     val profiles = repository.allProfiles
+    val muteRules = muteRuleRepository.allRules
 
     data class ActivitySummary(
         val blockedPackages: List<String>,
@@ -46,6 +48,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteProfile(profile: Profile) {
         viewModelScope.launch {
             repository.deleteProfile(profile)
+        }
+    }
+
+    fun toggleMuteRule(ruleId: Long, isEnabled: Boolean) {
+        viewModelScope.launch {
+            muteRuleRepository.setRuleEnabled(ruleId, isEnabled)
+        }
+    }
+
+    fun deleteMuteRule(rule: com.focuslock.data.db.entities.MuteRule) {
+        viewModelScope.launch {
+            muteRuleRepository.deleteRule(rule)
         }
     }
 }
